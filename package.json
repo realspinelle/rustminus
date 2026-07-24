@@ -1,0 +1,49 @@
+{
+  "name": "rustminus",
+  "version": "0.1.0",
+  "description": "TypeScript rewrite of rustplus.js — event-based Rust+ companion API client",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "rustminus": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate:proto": "bun run scripts/generate-proto.ts",
+    "build": "tsc -p tsconfig.build.json && bun run scripts/copy-assets.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "dev:cli": "bun run src/cli/index.ts"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.13.0",
+    "@liamcottle/push-receiver": "^0.0.4",
+    "axios": "^1.18.1",
+    "chrome-launcher": "^1.2.1",
+    "commander": "^15.0.0",
+    "express": "^5.2.1",
+    "jimp": "^1.6.1",
+    "uuid": "^14.0.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.10.5",
+    "protoc": "^35.1.0",
+    "ts-proto": "^2.12.0",
+    "typescript": "^5.9.3"
+  },
+  "trustedDependencies": [
+    "protobufjs"
+  ]
+}
