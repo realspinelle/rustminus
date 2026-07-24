@@ -23,7 +23,8 @@
     "build": "tsc -p tsconfig.build.json && bun run scripts/copy-assets.ts",
     "typecheck": "tsc --noEmit",
     "test": "bun test",
-    "dev:cli": "bun run src/cli/index.ts"
+    "dev:cli": "bun run src/cli/index.ts",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.13.0",
