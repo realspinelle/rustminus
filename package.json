@@ -4,6 +4,10 @@
   "description": "TypeScript rewrite of rustplus.js — event-based Rust+ companion API client",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realspinelle/rustminus"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
