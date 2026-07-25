@@ -1,6 +1,6 @@
 {
   "name": "rustminus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript rewrite of rustplus.js — event-based Rust+ companion API client",
   "type": "module",
   "license": "MIT",

@@ -59,12 +59,15 @@ export function parseNotification(data: FcmDataMessage): RustPlusNotification | 
     return undefined;
   }
 
-  const title = appData.find((item) => item.key === "title")?.value;
-  const message = appData.find((item) => item.key === "message")?.value;
+  // title/message aren't always present on every payload variant Facepunch sends (e.g. some
+  // pairing notifications omit them) - only channelId+body actually identify a Rust+ notification
+  // and are ever read downstream, so don't drop an otherwise-valid notification for lacking them.
+  const title = appData.find((item) => item.key === "title")?.value ?? "";
+  const message = appData.find((item) => item.key === "message")?.value ?? "";
   const channelId = appData.find((item) => item.key === "channelId")?.value;
   const rawBody = appData.find((item) => item.key === "body")?.value;
 
-  if (title === undefined || message === undefined || channelId === undefined || rawBody === undefined) {
+  if (channelId === undefined || rawBody === undefined) {
     return undefined;
   }
 
